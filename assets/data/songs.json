@@ -31,21 +31,22 @@
     "title": "Hold Me",
     "artist": "",
     "src": "assets/music/hold_me.mp3",
-    "albumArt": "assets/images/pic5.jpg",
+    "albumArt": "assets/images/pic5.jpeg",
     "lyrics": "assets/lyrics/hold_me.txt"
   },
   {
     "title": "Smile",
     "artist": "",
     "src": "assets/music/smile.mp3",
-    "albumArt": "assets/images/pic6.jpg",
+    "albumArt": "assets/images/pic6.jpeg",
     "lyrics": "assets/lyrics/smile.txt"
   },
   {
     "title": "こもりうた",
     "artist": "",
     "src": "assets/music/komoriuta.mp3",
-    "albumArt": "assets/images/pic7.jpg",
+    "albumArt": "assets/images/pic7.jpeg",
     "lyrics": "assets/lyrics/komoriuta.txt"
   }
+
 ]
