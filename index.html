@@ -41,9 +41,10 @@
                     </div>
                 </div>
 
+                <!-- Controls row: shuffle (left), center controls (prev/play/next), repeat (right) -->
                 <div class="controls">
-                    <!-- シャッフルボタン -->
-                    <button id="shuffleBtn" class="control-btn shuffle-btn" aria-pressed="false" title="シャッフル" onclick="toggleShuffle()">
+                    <!-- left: shuffle -->
+                    <button id="shuffleBtn" class="control-btn shuffle-btn" aria-pressed="false" title="シャッフル" onclick="toggleShuffle()" aria-label="シャッフル">
                         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#667eea" stroke-width="2">
                             <path d="M16 3h5v5"></path><path d="M21 3L13 11"></path>
                             <path d="M4 21h5l7-9"></path>
@@ -51,33 +52,35 @@
                         </svg>
                     </button>
 
-                    <!-- 一曲リピートボタンを追加 -->
-                    <button id="repeatBtn" class="control-btn repeat-btn" aria-pressed="false" title="一曲リピート" onclick="toggleRepeat()">
+                    <!-- center group: previous / play-pause / next -->
+                    <div class="controls-center">
+                        <button class="control-btn" onclick="previousSong()" aria-label="前の曲">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#667eea" stroke-width="2">
+                                <path d="M19 20L9 12l10-8v16z"/>
+                                <path d="M5 19V5"/>
+                            </svg>
+                        </button>
+
+                        <button class="control-btn play-pause-btn" onclick="togglePlay()" aria-label="再生/一時停止">
+                            <svg id="playIcon" width="30" height="30" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+                            <svg id="pauseIcon" width="30" height="30" viewBox="0 0 24 24" fill="white" style="display:none"><path d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg>
+                        </button>
+
+                        <button class="control-btn" onclick="nextSong()" aria-label="次の曲">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#667eea" stroke-width="2">
+                                <path d="M5 4l10 8-10 8V4z"/>
+                                <path d="M19 5v14"/>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- right: repeat (moved to far right for balance) -->
+                    <button id="repeatBtn" class="control-btn repeat-btn" aria-pressed="false" title="一曲リピート" onclick="toggleRepeat()" aria-label="一曲リピート">
                         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#667eea" stroke-width="2">
                             <path d="M17 1l4 4-4 4" /><path d="M21 5H9a4 4 0 0 0-4 4v1" />
                             <path d="M7 23l-4-4 4-4" /><path d="M3 19h12a4 4 0 0 0 4-4v-1" />
-                            <!-- small '1' to indicate one-track repeat -->
-                            <text x="12" y="17" fill="#667eea" font-size="8" text-anchor="middle" font-family="Arial" font-weight="700">1</text>
                         </svg>
-                    </button>
-
-                    <button class="control-btn" onclick="previousSong()">
-                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#667eea" stroke-width="2">
-                            <path d="M19 20L9 12l10-8v16z"/>
-                            <path d="M5 19V5"/>
-                        </svg>
-                    </button>
-
-                    <button class="control-btn play-pause-btn" onclick="togglePlay()">
-                        <svg id="playIcon" width="30" height="30" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
-                        <svg id="pauseIcon" width="30" height="30" viewBox="0 0 24 24" fill="white" style="display:none"><path d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg>
-                    </button>
-
-                    <button class="control-btn" onclick="nextSong()">
-                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#667eea" stroke-width="2">
-                            <path d="M5 4l10 8-10 8V4z"/>
-                            <path d="M19 5v14"/>
-                        </svg>
+                        <!-- small '1' to indicate one-track repeat (visually kept via CSS pseudo if desired) -->
                     </button>
                 </div>
 
