@@ -5,7 +5,7 @@ const songs = [
         title: "Summer Breeze",
         artist: "Demo Artist",
         src: "assets/music/song1.mp3",
-        albumArt: "assets/images/pic.jpeg",
+        albumArt: "assets/images/pic1.jpeg",
         lyrics: "Summer Breeze\nOpen up your windows\nLet the warm air in\nSoft guitar and memories\nWe let the evening begin"
     },
     {
@@ -19,14 +19,14 @@ const songs = [
         title: "Electric Dreams",
         artist: "Synth Wave",
         src: "assets/music/song3.mp3",
-        albumArt: "assets/images/pic3.jpeg",
+        albumArt: "assets/images/pic3.jpg",
         lyrics: "Neon nights and distant beams\nWe chase the glow of electric dreams\nHeartbeats synced to pulsing lights\nWe dance alone through endless nights"
     },
     {
         title: "Ocean Waves",
         artist: "Nature Sounds",
         src: "assets/music/song4.mp3",
-        albumArt: "assets/images/pic4.jpeg",
+        albumArt: "assets/images/pic4.jpg",
         lyrics: "Waves roll in, waves roll out\nA rhythm old as time\nBreathe the salt and let it fade\nThe sea will ease your mind"
     }
 ];
