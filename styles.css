@@ -1,6 +1,6 @@
 /* styles.css
-   更新: シャッフルボタンと同じ見た目になるよう repeat ボタンのスタイルを統一。
-   （repeat ボタンが縦に広くなってレイアウトが崩れる問題の修正）
+   更新: シャッフル/リピートボタンを同じ見た目に揃ったまま、
+   どちらかが有効なときにもう一方を視覚的に無効化するスタイルを追加。
 */
 
 * { margin:0; padding:0; box-sizing:border-box; }
@@ -112,13 +112,13 @@ body {
 .volume-level { height:100%; background:linear-gradient(90deg,#667eea 0%, #764ba2 100%); border-radius:8px; width:70%; }
 
 /* Shuffle / Repeat button specific styles
-   ここで shuffle と repeat を完全に同じ外観に揃えます（高さ揃い、内側のSVGも小さめに）
+   両ボタンを同じ寸法に揃え、無効状態の見た目も定義
 */
 .shuffle-btn,
 .repeat-btn {
     width:44px;
     height:44px;
-    padding:0; /* ボタン自体でサイズを決める（control-btn の padding は無視） */
+    padding:0;
     border-radius:8px;
     display:inline-flex;
     align-items:center;
@@ -144,6 +144,17 @@ body {
     background: linear-gradient(135deg,#667eea 0%, #764ba2 100%);
     color:#fff;
     box-shadow:0 6px 18px rgba(102,126,234,0.25);
+}
+
+/* Disabled state: 視覚的に分かりやすく、操作できないようにする */
+.shuffle-btn:disabled,
+.repeat-btn:disabled,
+.shuffle-btn[aria-disabled="true"],
+.repeat-btn[aria-disabled="true"] {
+    opacity:0.45;
+    cursor: default;
+    pointer-events: none;
+    filter: grayscale(10%);
 }
 
 /* keep accessibility focus visible */
