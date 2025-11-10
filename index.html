@@ -42,6 +42,25 @@
                 </div>
 
                 <div class="controls">
+                    <!-- シャッフルボタン -->
+                    <button id="shuffleBtn" class="control-btn shuffle-btn" aria-pressed="false" title="シャッフル" onclick="toggleShuffle()">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#667eea" stroke-width="2">
+                            <path d="M16 3h5v5"></path><path d="M21 3L13 11"></path>
+                            <path d="M4 21h5l7-9"></path>
+                            <path d="M4 3l7 9"></path>
+                        </svg>
+                    </button>
+
+                    <!-- 一曲リピートボタンを追加 -->
+                    <button id="repeatBtn" class="control-btn repeat-btn" aria-pressed="false" title="一曲リピート" onclick="toggleRepeat()">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#667eea" stroke-width="2">
+                            <path d="M17 1l4 4-4 4" /><path d="M21 5H9a4 4 0 0 0-4 4v1" />
+                            <path d="M7 23l-4-4 4-4" /><path d="M3 19h12a4 4 0 0 0 4-4v-1" />
+                            <!-- small '1' to indicate one-track repeat -->
+                            <text x="12" y="17" fill="#667eea" font-size="8" text-anchor="middle" font-family="Arial" font-weight="700">1</text>
+                        </svg>
+                    </button>
+
                     <button class="control-btn" onclick="previousSong()">
                         <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#667eea" stroke-width="2">
                             <path d="M19 20L9 12l10-8v16z"/>
