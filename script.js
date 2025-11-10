@@ -2,32 +2,32 @@
 
 const songs = [
     {
-        title: "Summer Breeze",
-        artist: "Demo Artist",
+        title: "Silent Glow",
+        artist: "",
         src: "assets/music/song1.mp3",
         albumArt: "assets/images/pic1.jpeg",
-        lyrics: "Summer Breeze\nOpen up your windows\nLet the warm air in\nSoft guitar and memories\nWe let the evening begin"
+        lyrics: "I feel your light behind closed eyes\The quiet hum of dreams untold\Wraps my heart in gentle gold\Softly falls the midnight air\Echoes whisper, you are there\Every sigh and silent plea Stay with me\through fading light\Guide me softly through the night\When the dawn begins to glow\Your love will lead me home, I know\Through the calm and through the rain\Every loss becomes your name\In the dark, your voice remains\Calling me to dream again"
     },
     {
-        title: "Midnight Jazz",
-        artist: "Cool Cats",
+        title: "Dream",
+        artist: "",
         src: "assets/music/song2.mp3",
         albumArt: "assets/images/pic2.jpeg",
-        lyrics: "Midnight lights\nSaxophones playing low\nCity sleeps but we don't\nIn the stillness we glow"
+        lyrics: "Dreams are still so far away\But I recall your smile that day\Safe and warm, just laughing free\Those gentle times still live in me\Tears may fall on quiet nights\When the weight is hard to hide\But a touch of kindness near\Always lights the dark with clear\The world is fragile, wide, and cold\But this sweet miracle I hold\Even if it hurts, I’ll try\One more step with you, tonight\Even if it hurts, I’ll try\One more step with you, tonight"
     },
     {
-        title: "Electric Dreams",
-        artist: "Synth Wave",
+        title: "NIGHT",
+        artist: "",
         src: "assets/music/song3.mp3",
         albumArt: "assets/images/pic3.jpg",
-        lyrics: "Neon nights and distant beams\nWe chase the glow of electric dreams\nHeartbeats synced to pulsing lights\nWe dance alone through endless nights"
+        lyrics: "Even if the dream is far away\I still remember your childhood smile\Sheltered days, just laughing free\Those memories are still alive in me\Some nights the tears begin to fall\Holding my breath, I hide it all\But someone’s kindness, soft and near\Lights a quiet flame, makes it clear\Hand in hand, let’s walk tonight\I know the glow that lives inside\A treasure chest, it’s all within\With love, it turns to light again\The world is wide, it fades away\But I’ll hold the miracle of meeting you\Even through pain, I’ll take one step\If it’s with you, I’ll never regret"
     },
     {
-        title: "Ocean Waves",
-        artist: "Nature Sounds",
+        title: "Bright",
+        artist: "",
         src: "assets/music/song4.mp3",
         albumArt: "assets/images/pic4.jpg",
-        lyrics: "Waves roll in, waves roll out\nA rhythm old as time\nBreathe the salt and let it fade\nThe sea will ease your mind"
+        lyrics: "The night is warm, the air is still\My drifting thoughts grow soft and still\I hear your light within the breeze\It carries me to gentle peace\Hold me close, the night is near\In your light, the world feels clear\Every breath, I find my way\Love will guide me, night to day\Gentle winds across the sky\Whisper soft as dreams pass by\Even when the shadows stay\Your warmth will lead me through the gray\Hold me close, the night is near\In your light, the world feels clear\Every breath, I find my way\Love will guide me, night to day"
     }
 ];
 
