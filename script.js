@@ -34,6 +34,9 @@ const songs = [
 const audio = document.getElementById('audioPlayer');
 let currentSongIndex = 0;
 
+// --- 新規追加: シャッフルフラグ ---
+let isShuffle = false;
+
 function formatTime(seconds) {
     const mins = Math.floor(seconds / 60);
     const secs = Math.floor(seconds % 60);
@@ -76,8 +79,12 @@ function updateProgress() {
     }
 }
 
+// --- 変更: ended 時に自動で次の曲を再生するように (autoplay=true) ---
 audio.addEventListener('timeupdate', updateProgress);
-audio.addEventListener('ended', ()=> nextSong());
+audio.addEventListener('ended', ()=> {
+    // 終了時は自動で次の曲を再生する（シャッフルがONならランダム）
+    playNext(true);
+});
 audio.addEventListener('loadedmetadata', ()=> {
     document.getElementById('duration').textContent = formatTime(audio.duration);
 });
@@ -91,16 +98,53 @@ function seek(event) {
 }
 
 function previousSong(){ 
+    // previousは通常通り（シャッフル中でも直前へ戻るロジックが必要なら履歴を実装）
     currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
     const wasPlaying = !audio.paused;
     loadSong(currentSongIndex);
     if (wasPlaying) audio.play().catch(()=>{});
 }
 function nextSong(){
-    currentSongIndex = (currentSongIndex + 1) % songs.length;
+    // ユーザが「次へ」ボタンを押した場合は自動再生フラグを false として処理
+    playNext(false);
+}
+
+// --- 新規追加: 次の曲へ進む共通処理（autoplay が true のときは必ず再生する） ---
+function playNext(autoplay = false) {
+    if (isShuffle) {
+        // シャッフル時は現在と異なるランダムインデックスを選ぶ（曲数が1ならそのまま）
+        if (songs.length > 1) {
+            let nextIndex = currentSongIndex;
+            while (nextIndex === currentSongIndex) {
+                nextIndex = Math.floor(Math.random() * songs.length);
+            }
+            currentSongIndex = nextIndex;
+        }
+        // songs.length === 1 の場合は currentSongIndex のまま
+    } else {
+        currentSongIndex = (currentSongIndex + 1) % songs.length;
+    }
+
     const wasPlaying = !audio.paused;
     loadSong(currentSongIndex);
-    if (wasPlaying) audio.play().catch(()=>{});
+
+    // autoplay が true の場合は必ず再生（ended の場合など）
+    if (autoplay || wasPlaying) {
+        audio.play().catch(()=>{});
+    }
+}
+
+// --- 新規追加: シャッフル切替 ---
+function toggleShuffle() {
+    isShuffle = !isShuffle;
+    const btn = document.getElementById('shuffleBtn');
+    if (isShuffle) {
+        btn.classList.add('active');
+        btn.setAttribute('aria-pressed','true');
+    } else {
+        btn.classList.remove('active');
+        btn.setAttribute('aria-pressed','false');
+    }
 }
 
 function changeVolume(event){
@@ -170,5 +214,6 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
+// 初期化
 loadSong(0);
 renderPlaylist();
