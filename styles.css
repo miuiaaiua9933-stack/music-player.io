@@ -29,6 +29,53 @@ body {
 .vinyl-record.spinning { animation: spin 3s linear infinite; }
 @keyframes spin { from{transform:rotate(0)} to{transform:rotate(360deg)} }
 
+/* --- 追加: レコード中央の穴（spindle）風スタイル --- */
+
+/* album-art を少し下げて、spindle-hole を上に表示するための z-index 調整 */
+.album-art {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 5px 18px rgba(0,0,0,0.35);
+  border: 3px solid rgba(255,255,255,0.18);
+  z-index: 1; /* album-art をベースにしておく */
+}
+
+/* レコード中央に重ねる小さな「穴」パーツ */
+.spindle-hole {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 28px;   /* 好みに応じて調整（小さくするとよりリアル） */
+  height: 28px;
+  border-radius: 50%;
+  z-index: 3; /* album-art の上に表示 */
+  pointer-events: none; /* クリックを妨げない */
+  /* 見た目: 暗い中心 + 少し明るいリム + 小さな上部ハイライト */
+  background:
+    radial-gradient(circle at 50% 50%,
+      rgba(0,0,0,0.95) 0%,
+      rgba(0,0,0,0.95) 55%,
+      rgba(0,0,0,0.75) 56%,
+      rgba(255,255,255,0.06) 62%,
+      rgba(255,255,255,0.02) 64%,
+      rgba(0,0,0,0.0) 100%);
+  box-shadow:
+    inset 0 2px 3px rgba(255,255,255,0.06), /* 内側のわずかな光 */
+    0 1px 6px rgba(0,0,0,0.25);             /* 外側のシャドウで沈んだ感じ */
+  border: 1px solid rgba(255,255,255,0.03); /* ごく薄い縁 */
+  mix-blend-mode: normal;
+}
+
+/* オプション: 回転アニメーション時に小さな角度差のハイライトをつけたい場合 */
+/* .vinyl-record.spinning .spindle-hole { transform: translate(-50%, -50%) rotate(5deg); } */
+
 /* Lyrics overlay on the spinning disk (animated) */
 .lyrics-overlay {
     position:absolute;
