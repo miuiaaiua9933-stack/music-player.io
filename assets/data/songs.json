@@ -1,0 +1,51 @@
+[
+  {
+    "title": "Silent Glow",
+    "artist": "",
+    "src": "assets/music/song1.mp3",
+    "albumArt": "assets/images/pic1.jpeg",
+    "lyrics": "assets/lyrics/silent_glow.txt"
+  },
+  {
+    "title": "Dream",
+    "artist": "",
+    "src": "assets/music/song2.mp3",
+    "albumArt": "assets/images/pic2.jpeg",
+    "lyrics": "assets/lyrics/dream.txt"
+  },
+  {
+    "title": "NIGHT",
+    "artist": "",
+    "src": "assets/music/song3.mp3",
+    "albumArt": "assets/images/pic3.jpg",
+    "lyrics": "assets/lyrics/night.txt"
+  },
+  {
+    "title": "Bright",
+    "artist": "",
+    "src": "assets/music/song4.mp3",
+    "albumArt": "assets/images/pic4.jpg",
+    "lyrics": "assets/lyrics/bright.txt"
+  },
+  {
+    "title": "Hold Me",
+    "artist": "",
+    "src": "assets/music/hold_me.mp3",
+    "albumArt": "assets/images/pic5.jpg",
+    "lyrics": "assets/lyrics/hold_me.txt"
+  },
+  {
+    "title": "Smile",
+    "artist": "",
+    "src": "assets/music/smile.mp3",
+    "albumArt": "assets/images/pic6.jpg",
+    "lyrics": "assets/lyrics/smile.txt"
+  },
+  {
+    "title": "こもりうた",
+    "artist": "",
+    "src": "assets/music/komoriuta.mp3",
+    "albumArt": "assets/images/pic7.jpg",
+    "lyrics": "assets/lyrics/komoriuta.txt"
+  }
+]
