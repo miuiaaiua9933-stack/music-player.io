@@ -29,6 +29,27 @@ const songs = [
         albumArt: "assets/images/pic4.jpg",
         lyrics: "The night is warm, the air is still\My drifting thoughts grow soft and still\I hear your light within the breeze\It carries me to gentle peace\Hold me close, the night is near\In your light, the world feels clear\Every breath, I find my way\Love will guide me, night to day\Gentle winds across the sky\Whisper soft as dreams pass by\Even when the shadows stay\Your warmth will lead me through the gray\Hold me close, the night is near\In your light, the world feels clear\Every breath, I find my way\Love will guide me, night to day"
     }
+    {
+        title: "Hold Me",
+        artist: "",
+        src: "assets/music/Hold me.mp3",
+        albumArt: "assets/images/pic5.jpg",
+        lyrics: "The night is warm, the air is still\My drifting thoughts grow soft and still\I hear your light within the breeze\It carries me to gentle peace\Hold me close, the night is near\In your light, the world feels clear\Every breath, I find my way\Love will guide me, night to day\Gentle winds across the sky\Whisper soft as dreams pass by\Even when the shadows stay\Your warmth will lead me through the gray\Hold me close, the night is near\In your light, the world feels clear\Every breath, I find my way\Love will guide me, night to day"
+    }
+    {
+        title: "Smile",
+        artist: "",
+        src: "assets/music/Smile.mp3",
+        albumArt: "assets/images/pic6.jpg",
+        lyrics: "明日の光はまだ見えなくても\そばにいるよ 愛してくれる人が\笑顔に触れ 心がほどけて\美しさがそっと 心を満たす\そんな幸せ感じているから\心からありがとう 伝えたいよ\あの頃のバスの時間は\笑い声が止まらなかった\小さな声が混ざっても\変わらない楽しさがあった\いろんな時を越えてきたけど\ここにあるのは変わらぬ愛\Smiles keep shining through the night\やさしい光が包み込む\Dreams keep growing with the sun\今日もまた歩き出せる\窓の外には温かな陽射し\夢は途切れず続いている\愛は色褪せない光\希望胸に進んで行こう\Hold on to the love we’ve found\手を取り合って歩こうよ\Even when the world feels cold\温もり感じていよう\Smiles keep shining through the night\やさしい光が包み込む\Dreams keep growing with the sun\今日もまた歩き出せる"
+    }
+    {
+        title: "こもりうた",
+        artist: "",
+        src: "assets/music/こもりうた.mp3",
+        albumArt: "assets/images/pic7.jpg",
+        lyrics: "ねむるまえに　そっとみあげて\ほしがきらりと　まどをてらす\やさしいひかり　そっとひろがり\いま　ねむりのとびらが　ひらくよ\おやすみ　おやすみ　あしたのゆめを\きらきら　ひかるほしに　むねをつつまれて\おやすみ　おやすみ　やさしいひかりが\あなたを包んで　ねむりをそっと　さそうよ\ふかいもりの　やさしいこえが\ちいさなそらに　うたをささやく\かぜがそよそよ　まどをなでて\ねむりのしずくが　あなたをくるむ\おやすみ　おやすみ　あしたのゆめを\きらきら　ひかるほしに　むねをつつまれて\おやすみ　おやすみ　やさしいひかりが\あなたをつつんで　ねむりをそっと　さそうよ\ひかりはそっと　やさしく　やさしく\いっしょにねむりにつく　そっとね"
+    }
 ];
 
 const audio = document.getElementById('audioPlayer');
