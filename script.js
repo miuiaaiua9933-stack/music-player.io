@@ -34,7 +34,7 @@ const songs = [
 const audio = document.getElementById('audioPlayer');
 let currentSongIndex = 0;
 
-// --- シャッフルと一曲リピート用フラグ ---
+// フラグ
 let isShuffle = false;
 let isRepeatOne = false;
 
@@ -80,7 +80,7 @@ function updateProgress() {
     }
 }
 
-// 終了時の挙動: リピート優先、その後シャッフル/順次
+// 終了時の挙動
 audio.addEventListener('timeupdate', updateProgress);
 audio.addEventListener('ended', ()=> {
     if (isRepeatOne) {
@@ -133,27 +133,58 @@ function playNext(autoplay = false) {
     }
 }
 
+// --- 変更: toggleShuffle と toggleRepeat が互いを無効化／有効化するようにした ---
 function toggleShuffle() {
-    isShuffle = !isShuffle;
     const btn = document.getElementById('shuffleBtn');
+    const rpt = document.getElementById('repeatBtn');
+
+    // 切り替え後の状態
+    isShuffle = !isShuffle;
+
     if (isShuffle) {
+        // shuffle をONにする -> repeat をOFFかつ無効化
         btn.classList.add('active');
         btn.setAttribute('aria-pressed','true');
+
+        // disable repeat
+        isRepeatOne = false;
+        rpt.classList.remove('active');
+        rpt.setAttribute('aria-pressed','false');
+        rpt.disabled = true;
+        rpt.setAttribute('aria-disabled','true');
     } else {
+        // shuffle をOFFに -> repeat を有効化（操作可能に）
         btn.classList.remove('active');
         btn.setAttribute('aria-pressed','false');
+
+        rpt.disabled = false;
+        rpt.removeAttribute('aria-disabled');
     }
 }
 
 function toggleRepeat() {
+    const rpt = document.getElementById('repeatBtn');
+    const btn = document.getElementById('shuffleBtn');
+
     isRepeatOne = !isRepeatOne;
-    const btn = document.getElementById('repeatBtn');
+
     if (isRepeatOne) {
-        btn.classList.add('active');
-        btn.setAttribute('aria-pressed','true');
-    } else {
+        // repeat をONにする -> shuffle をOFFかつ無効化
+        rpt.classList.add('active');
+        rpt.setAttribute('aria-pressed','true');
+
+        isShuffle = false;
         btn.classList.remove('active');
         btn.setAttribute('aria-pressed','false');
+        btn.disabled = true;
+        btn.setAttribute('aria-disabled','true');
+    } else {
+        // repeat をOFFに -> shuffle を有効化
+        rpt.classList.remove('active');
+        rpt.setAttribute('aria-pressed','false');
+
+        btn.disabled = false;
+        btn.removeAttribute('aria-disabled');
     }
 }
 
@@ -222,6 +253,19 @@ document.addEventListener('keydown', (e) => {
         e.preventDefault();
         toggleLyrics();
     }
+});
+
+// 初期化: ボタン disabled 状態をクリア（安全策）
+window.addEventListener('DOMContentLoaded', () => {
+    const shuffleBtn = document.getElementById('shuffleBtn');
+    const repeatBtn = document.getElementById('repeatBtn');
+    shuffleBtn.disabled = false;
+    repeatBtn.disabled = false;
+    shuffleBtn.removeAttribute('aria-disabled');
+    repeatBtn.removeAttribute('aria-disabled');
+    // ensure aria-pressed reflect flags
+    shuffleBtn.setAttribute('aria-pressed', isShuffle ? 'true' : 'false');
+    repeatBtn.setAttribute('aria-pressed', isRepeatOne ? 'true' : 'false');
 });
 
 loadSong(0);
