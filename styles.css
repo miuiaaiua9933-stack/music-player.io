@@ -103,6 +103,14 @@ body {
 .volume-slider { flex:1; height:8px; background:#e0e0e0; border-radius:8px; position:relative; cursor:pointer; }
 .volume-level { height:100%; background:linear-gradient(90deg,#667eea 0%, #764ba2 100%); border-radius:8px; width:70%; }
 
+/* Shuffle button specific styles */
+.shuffle-btn { width:44px; height:44px; border-radius:8px; }
+.shuffle-btn svg { display:block; }
+.shuffle-btn.active, .shuffle-btn[aria-pressed="true"] {
+    background: linear-gradient(135deg,#667eea 0%, #764ba2 100%);
+    color: #fff;
+    box-shadow:0 6px 18px rgba(102,126,234,0.25);
+}
 .lyrics-toggle {
     min-width:40px; min-height:32px; padding:6px 10px; border-radius:18px;
     display:inline-flex; align-items:center; justify-content:center; cursor:pointer;
