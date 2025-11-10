@@ -1,4 +1,8 @@
-/* styles.css 
+/* styles.css
+   更新: シャッフルボタンと同じ見た目になるよう repeat ボタンのスタイルを統一。
+   （repeat ボタンが縦に広くなってレイアウトが崩れる問題の修正）
+*/
+
 * { margin:0; padding:0; box-sizing:border-box; }
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -107,21 +111,47 @@ body {
 .volume-slider { flex:1; height:8px; background:#e0e0e0; border-radius:8px; position:relative; cursor:pointer; }
 .volume-level { height:100%; background:linear-gradient(90deg,#667eea 0%, #764ba2 100%); border-radius:8px; width:70%; }
 
-/* Shuffle / Repeat button specific styles */
-.shuffle-btn { width:44px; height:44px; border-radius:8px; }
-.shuffle-btn svg { display:block; }
-.shuffle-btn.active, .shuffle-btn[aria-pressed="true"] {
+/* Shuffle / Repeat button specific styles
+   ここで shuffle と repeat を完全に同じ外観に揃えます（高さ揃い、内側のSVGも小さめに）
+*/
+.shuffle-btn,
+.repeat-btn {
+    width:44px;
+    height:44px;
+    padding:0; /* ボタン自体でサイズを決める（control-btn の padding は無視） */
+    border-radius:8px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    background: transparent;
+    transition: background .15s, box-shadow .15s, transform .12s;
+    box-sizing: border-box;
+}
+
+/* SVG inside buttons: 統一サイズで縦長化を防ぐ */
+.shuffle-btn svg,
+.repeat-btn svg {
+    width:20px;
+    height:20px;
+    display:block;
+}
+
+/* Active state (same for both) */
+.shuffle-btn.active,
+.shuffle-btn[aria-pressed="true"],
+.repeat-btn.active,
+.repeat-btn[aria-pressed="true"] {
     background: linear-gradient(135deg,#667eea 0%, #764ba2 100%);
-    color: #fff;
+    color:#fff;
     box-shadow:0 6px 18px rgba(102,126,234,0.25);
 }
 
-.repeat-btn { width:44px; height:44px; border-radius:8px; }
-.repeat-btn svg { display:block; }
-.repeat-btn.active, .repeat-btn[aria-pressed="true"] {
-    background: linear-gradient(135deg,#667eea 0%, #764ba2 100%);
-    color: #fff;
-    box-shadow:0 6px 18px rgba(102,126,234,0.25);
+/* keep accessibility focus visible */
+.shuffle-btn:focus,
+.repeat-btn:focus,
+.control-btn:focus {
+    outline: 3px solid rgba(102,126,234,0.18);
+    outline-offset: 2px;
 }
 
 .lyrics-toggle {
