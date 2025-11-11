@@ -14,7 +14,7 @@ body {
     justify-content: center;
     align-items: flex-start; /* ← 上寄せに変更して自然にスクロール可能に */
     
-    padding: 40px 20px 100px; /* ← 下に余裕をもたせる */
+    padding: 0px 20px 0px; /* ← 下に余裕をもたせる */
     position: relative;
     overflow-y: auto; /* ← スクロールできるようにする */
     -webkit-overflow-scrolling: touch; /* ← iOS の慣性スクロール対応 */
