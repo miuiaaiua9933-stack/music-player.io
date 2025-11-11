@@ -183,8 +183,8 @@ body::before {
 .lyrics-panel-overlay {
     position:relative;
     z-index:52;
-    max-height:80%;
-    width:94%;
+    max-height:100%;
+    width:100%;
     overflow:auto;
     padding:14px 16px;
     border-radius:12px;
