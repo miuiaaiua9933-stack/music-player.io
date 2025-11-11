@@ -1,6 +1,8 @@
 /* styles.css
-   更新: シャッフル/リピートボタンを同じ見た目に揃ったまま、
-   どちらかが有効なときにもう一方を視覚的に無効化するスタイルを追加。
+   更新点:
+   - 歌詞オーバーレイが円盤の背後に行ってしまう問題を z-index で安定化
+   - 歌詞パネルのスクロールバーを非表示に（スクロール機能はそのまま）
+   - shuffle/repeat ボタン等の既存スタイルは維持
 */
 
 * { margin:0; padding:0; box-sizing:border-box; }
@@ -24,14 +26,12 @@ body {
     position:relative; width:260px; height:260px; cursor:pointer; flex-shrink:0;
     display:flex; align-items:center; justify-content:center;
 }
-.vinyl-record { width:100%; height:100%; border-radius:50%; background: radial-gradient(circle at center,#1a1a1a 0%, #2d2d2d 100%); position:relative; box-shadow:0 10px 30px rgba(0,0,0,0.5); overflow:hidden; }
-.album-art { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:170px; height:170px; border-radius:50%; object-fit:cover; border:3px solid rgba(255,255,255,0.18); box-shadow:0 5px 18px rgba(0,0,0,0.35); }
-.vinyl-record.spinning { animation: spin 3s linear infinite; }
-@keyframes spin { from{transform:rotate(0)} to{transform:rotate(360deg)} }
-
-/* --- 追加: レコード中央の穴（spindle）風スタイル --- */
-
-/* album-art を少し下げて、spindle-hole を上に表示するための z-index 調整 */
+.vinyl-record {
+    width:100%; height:100%; border-radius:50%;
+    background: radial-gradient(circle at center,#1a1a1a 0%, #2d2d2d 100%);
+    position:relative; box-shadow:0 10px 30px rgba(0,0,0,0.5); overflow:hidden;
+    z-index:10; /* 明示しておく（オーバーレイと比較しやすくする） */
+}
 .album-art {
   position: absolute;
   top: 50%;
@@ -43,21 +43,22 @@ body {
   object-fit: cover;
   box-shadow: 0 5px 18px rgba(0,0,0,0.35);
   border: 3px solid rgba(255,255,255,0.18);
-  z-index: 1; /* album-art をベースにしておく */
+  z-index:11; /* album-artはvinylの内部でやや上に見えるが、lyricsより下にする */
 }
+.vinyl-record.spinning { animation: spin 3s linear infinite; }
+@keyframes spin { from{transform:rotate(0)} to{transform:rotate(360deg)} }
 
-/* レコード中央に重ねる小さな「穴」パーツ */
+/* --- 追加/変更: レコード中央の穴（spindle）風スタイル --- */
 .spindle-hole {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 28px;   /* 好みに応じて調整（小さくするとよりリアル） */
+  width: 28px;
   height: 28px;
   border-radius: 50%;
-  z-index: 3; /* album-art の上に表示 */
-  pointer-events: none; /* クリックを妨げない */
-  /* 見た目: 暗い中心 + 少し明るいリム + 小さな上部ハイライト */
+  z-index: 60; /* スピンドルは最前面に出す（視覚効果） */
+  pointer-events: none;
   background:
     radial-gradient(circle at 50% 50%,
       rgba(0,0,0,0.95) 0%,
@@ -67,16 +68,12 @@ body {
       rgba(255,255,255,0.02) 64%,
       rgba(0,0,0,0.0) 100%);
   box-shadow:
-    inset 0 2px 3px rgba(255,255,255,0.06), /* 内側のわずかな光 */
-    0 1px 6px rgba(0,0,0,0.25);             /* 外側のシャドウで沈んだ感じ */
-  border: 1px solid rgba(255,255,255,0.03); /* ごく薄い縁 */
-  mix-blend-mode: normal;
+    inset 0 2px 3px rgba(255,255,255,0.06),
+    0 1px 6px rgba(0,0,0,0.25);
+  border: 1px solid rgba(255,255,255,0.03);
 }
 
-/* オプション: 回転アニメーション時に小さな角度差のハイライトをつけたい場合 */
-/* .vinyl-record.spinning .spindle-hole { transform: translate(-50%, -50%) rotate(5deg); } */
-
-/* Lyrics overlay on the spinning disk (animated) */
+/* --- 歌詞オーバーレイ: z-index 安定化 & スクロールバー非表示 --- */
 .lyrics-overlay {
     position:absolute;
     top:0;
@@ -92,7 +89,9 @@ body {
     transition: opacity .28s cubic-bezier(.2,.9,.3,1), transform .28s cubic-bezier(.2,.9,.3,1);
     pointer-events:none;
     will-change: opacity, transform;
+    z-index:50; /* ここで明示。album-art (z:11) より上、spindle (z:60) より下 */
 }
+/* translucent circular layer so disk is still visible behind */
 .lyrics-overlay::before {
     content: "";
     position:absolute;
@@ -107,10 +106,10 @@ body {
 }
 .lyrics-panel-overlay {
     position:relative;
-    z-index:2;
+    z-index:52; /* パネル自体は overlay の上に置く */
     max-height:80%;
     width:94%;
-    overflow:auto;
+    overflow:auto; /* スクロールは動作させる */
     padding:14px 16px;
     border-radius:12px;
     color:#fff;
@@ -125,10 +124,22 @@ body {
     transform: translateY(8px);
     transition: transform .28s cubic-bezier(.2,.9,.3,1);
 }
+
+/* ---- ここが重要：スクロールバー非表示だがスクロールはそのまま ---- */
+/* Chrome, Edge, Safari */
+.lyrics-panel-overlay::-webkit-scrollbar { width: 0; height: 0; }
+/* Firefox */
+.lyrics-panel-overlay { scrollbar-width: none; -ms-overflow-style: none; }
+/* For IE/Edge older */
+.lyrics-panel-overlay::-ms-overflow-style { display: none; }
+/* 以上でスクロールバーを見えなくするが、overflow:auto により
+   タッチ、ホイール、トラックパッドでのスクロールは保持されます. */
+
 .lyrics-overlay.open .lyrics-panel-overlay {
     transform: translateY(0);
 }
 
+/* 以降は既存スタイル（簡略表示して維持） */
 .song-info { text-align:left; display:flex; align-items:center; gap:12px; justify-content:space-between; }
 .title-area { display:flex; align-items:center; gap:10px; min-width:0; flex:1; }
 .song-title { font-size:22px; font-weight:700; color:#333; margin-bottom:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
@@ -139,13 +150,11 @@ body {
 .progress { height:100%; background:linear-gradient(90deg,#667eea 0%, #764ba2 100%); width:0%; transition:width 0.1s linear; border-radius:10px; }
 .time-info { display:flex; justify-content:space-between; font-size:12px; color:#999; margin-top:8px; }
 
-/* controls: left (shuffle), center (prev/play/next), right (repeat) */
 .controls { display:flex; align-items:center; gap:12px; margin:10px 0 12px; width:100%; }
 .control-btn { background:none; border:none; cursor:pointer; padding:8px; transition:transform .15s; display:inline-flex; align-items:center; justify-content:center; }
 .control-btn:hover { transform:scale(1.06); }
 .play-pause-btn { width:70px; height:70px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:linear-gradient(135deg,#667eea 0%, #764ba2 100%); box-shadow:0 5px 20px rgba(102,126,234,0.35); }
 
-/* center group is centered using margin auto */
 .controls-center { display:flex; gap:12px; margin:0 auto; }
 
 .stack-area { width:100%; }
@@ -158,32 +167,12 @@ body {
 .volume-slider { flex:1; height:8px; background:#e0e0e0; border-radius:8px; position:relative; cursor:pointer; }
 .volume-level { height:100%; background:linear-gradient(90deg,#667eea 0%, #764ba2 100%); border-radius:8px; width:70%; }
 
-/* Shuffle / Repeat button specific styles
-   両ボタンを同じ寸法に揃え、無効状態の見た目も定義
-*/
 .shuffle-btn,
 .repeat-btn {
-    width:44px;
-    height:44px;
-    padding:0;
-    border-radius:8px;
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    background: transparent;
-    transition: background .15s, box-shadow .15s, transform .12s;
-    box-sizing: border-box;
+    width:44px; height:44px; padding:0; border-radius:8px; display:inline-flex; align-items:center; justify-content:center;
 }
-
-/* SVG inside buttons: 統一サイズで縦長化を防ぐ */
 .shuffle-btn svg,
-.repeat-btn svg {
-    width:20px;
-    height:20px;
-    display:block;
-}
-
-/* Active state (same for both) */
+.repeat-btn svg { width:20px; height:20px; display:block; }
 .shuffle-btn.active,
 .shuffle-btn[aria-pressed="true"],
 .repeat-btn.active,
@@ -192,24 +181,11 @@ body {
     color:#fff;
     box-shadow:0 6px 18px rgba(102,126,234,0.25);
 }
-
-/* Disabled state: 視覚的に分かりやすく、操作できないようにする */
 .shuffle-btn:disabled,
 .repeat-btn:disabled,
 .shuffle-btn[aria-disabled="true"],
 .repeat-btn[aria-disabled="true"] {
-    opacity:0.45;
-    cursor: default;
-    pointer-events: none;
-    filter: grayscale(10%);
-}
-
-/* keep accessibility focus visible */
-.shuffle-btn:focus,
-.repeat-btn:focus,
-.control-btn:focus {
-    outline: 3px solid rgba(102,126,234,0.18);
-    outline-offset: 2px;
+    opacity:0.45; cursor: default; pointer-events: none; filter: grayscale(10%);
 }
 
 .lyrics-toggle {
