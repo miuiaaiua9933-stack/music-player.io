@@ -4,9 +4,15 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
-    min-height:100vh; display:flex; justify-content:center; align-items:center;
-    padding:20px;
+    background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%); 
+    /* スマホ環境でも見切れないように動的ビューポートを採用 */
+    min-height: 100vh;
+    min-height: 100dvh;  
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+    /* 上下左右にゆとりを持たせ、特に下に余白を多めに */
+    padding: 20px 20px 60px;
     position: relative;
     overflow: hidden;
 }
@@ -411,7 +417,7 @@ body::before {
 }
 
 .lyrics-toggle {
-    min-width:40px; min-height:32px; padding:6px 10px; border-radius:18px;
+    min-width:40px; min-height:32px; padding:6px 10px; border-radius:8px;
     display:inline-flex; align-items:center; justify-content:center; cursor:pointer;
     font-size:14px; 
     color:#8a77ff; 
