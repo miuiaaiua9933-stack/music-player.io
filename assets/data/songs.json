@@ -47,7 +47,22 @@
     "src": "assets/music/こもりうた.mp3",
     "albumArt": "assets/images/pic7.jpeg",
     "lyrics": "assets/lyrics/komoriuta.txt"
+  },
+  {
+    "title": "Jungle ~奇跡の灯り~ JP ver.",
+    "artist": "",
+    "src": "assets/music/Jungle ~奇跡の灯り~ JP ver..mp3",
+    "albumArt": "assets/images/pic8.jpeg",
+    "lyrics": "assets/lyrics/Jungle ~奇跡の灯り~ JP ver..txt"
+  },
+  {
+    "title": "Jungle ~奇跡の灯り~ mix",
+    "artist": "",
+    "src": "assets/music/Jungle ~奇跡の灯り~ mix.mp3",
+    "albumArt": "assets/images/pic9.jpeg",
+    "lyrics": "assets/lyrics/Jungle ~奇跡の灯り~ mix.txt"
   }
 
 ]
+
 
