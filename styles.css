@@ -434,7 +434,7 @@ body::before {
     box-shadow:0 6px 18px rgba(138, 119, 255, 0.4);
 }
 
-.playlist { max-height:240px; overflow:auto; display:flex; flex-direction:column; gap:8px; }
+.playlist { max-height:240px; overflow-y:auto; overflow-x:hidden; display:flex; flex-direction:column; gap:8px; }
 
 .playlist-item {
     padding:12px; 
