@@ -17,7 +17,7 @@
     "title": "NIGHT",
     "artist": "",
     "src": "assets/music/song3.mp3",
-    "albumArt": "assets/images/pic3.jpg",
+    "albumArt": "assets/images/pic3.jpeg",
     "lyrics": "assets/lyrics/night.txt"
   },
   {
@@ -64,5 +64,6 @@
   }
 
 ]
+
 
 
