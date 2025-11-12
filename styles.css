@@ -5,30 +5,24 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
-    
-    /* 高さは動的に確保、モバイルUI変動に対応 */
     min-height: 100vh;
     min-height: 100dvh;
-
     display: flex;
     justify-content: center;
-    align-items: flex-start; /* ← 上寄せに変更して自然にスクロール可能に */
-    
-    padding: 0px 20px 0px; /* ← 下に余裕をもたせる */
+    align-items: flex-start;
+    padding: 0px 20px 0px;
     position: relative;
-    overflow-y: auto; /* ← スクロールできるようにする */
-    -webkit-overflow-scrolling: touch; /* ← iOS の慣性スクロール対応 */
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
-/* プレイヤー本体をやや中央に見せたい場合 */
 .player-container {
-    margin-top: 8vh; /* ← 画面上から少し下げることで中央感を演出 */
-    margin-bottom: 10vh; /* ← 下部余白を広げて操作しやすく */
+    margin-top: 8vh;
+    margin-bottom: 10vh;
     width: 100%;
     max-width: 700px;
 }
 
-/* 動的グラデーション背景 */
 body::before {
     content: '';
     position: fixed;
@@ -86,7 +80,6 @@ body::before {
     z-index:10;
 }
 
-/* レコードの溝を追加 */
 .vinyl-record::before {
     content: '';
     position: absolute;
@@ -122,32 +115,38 @@ body::before {
 .vinyl-record.spinning { animation: spin 3s linear infinite; }
 @keyframes spin { from{transform:rotate(0)} to{transform:rotate(360deg)} }
 
-/* スピンドルホール */
+/* ↓↓↓ ここから改良版スピンドルホール ↓↓↓ */
 .spindle-hole {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 28px;
-  height: 28px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
   z-index: 60;
   pointer-events: none;
   background:
     radial-gradient(circle at 50% 50%,
-      rgba(0,0,0,0.95) 0%,
-      rgba(0,0,0,0.95) 55%,
-      rgba(0,0,0,0.75) 56%,
-      rgba(255,255,255,0.06) 62%,
-      rgba(255,255,255,0.02) 64%,
+      rgba(0,0,0,0.9) 0%,
+      rgba(0,0,0,0.9) 55%,
+      rgba(0,0,0,0.7) 56%,
+      rgba(255,255,255,0.08) 60%,
+      rgba(255,255,255,0.03) 62%,
       rgba(0,0,0,0.0) 100%);
   box-shadow:
     inset 0 2px 3px rgba(255,255,255,0.06),
     0 1px 6px rgba(0,0,0,0.25);
   border: 1px solid rgba(255,255,255,0.03);
+  animation: spindleGlow 4s ease-in-out infinite;
 }
 
-/* 歌詞オーバーレイ */
+@keyframes spindleGlow {
+  0%, 100% { box-shadow: inset 0 2px 3px rgba(255,255,255,0.06), 0 1px 6px rgba(0,0,0,0.25); }
+  50% { box-shadow: inset 0 2px 4px rgba(255,255,255,0.12), 0 0 8px rgba(138,119,255,0.25); }
+}
+/* ↑↑↑ 改良版ここまで ↑↑↑ */
+
 .lyrics-overlay {
     position:absolute;
     top:0;
@@ -201,7 +200,6 @@ body::before {
     transition: transform .28s cubic-bezier(.2,.9,.3,1);
 }
 
-/* スクロールバー非表示 */
 .lyrics-panel-overlay::-webkit-scrollbar { width: 0; height: 0; }
 .lyrics-panel-overlay { scrollbar-width: none; -ms-overflow-style: none; }
 
@@ -254,7 +252,6 @@ body::before {
     box-shadow: 0 0 20px rgba(138, 119, 255, 0.6);
 }
 
-/* プログレスバーの光る玉 */
 .progress::after {
     content: '';
     position: absolute;
@@ -323,7 +320,6 @@ body::before {
     overflow: hidden;
 }
 
-/* Play/Pauseボタンのホバー時のシャイン */
 .play-pause-btn::before {
     content: '';
     position: absolute;
@@ -384,7 +380,6 @@ body::before {
     position: relative;
 }
 
-/* ボリュームスライダーの光る玉 */
 .volume-level::after {
     content: '';
     position: absolute;
