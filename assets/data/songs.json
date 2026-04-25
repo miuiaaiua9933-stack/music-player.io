@@ -1,5 +1,33 @@
 [
   {
+    "title": "百歩先の景色",
+    "artist": "",
+    "src": "assets/music/百歩先の景色.mp3",
+    "albumArt": "assets/images/pic11.jpeg",
+    "lyrics": "assets/lyrics/百歩先の瞳.txt"
+  },
+  {
+    "title": "Smile",
+    "artist": "",
+    "src": "assets/music/Smile.mp3",
+    "albumArt": "assets/images/pic6.jpeg",
+    "lyrics": "assets/lyrics/smile.txt"
+  },
+  {
+    "title": "Silver Skies Hush",
+    "artist": "",
+    "src": "assets/music/Silver Skies Hush.mp3",
+    "albumArt": "assets/images/pic10.jpeg",
+    "lyrics": "assets/lyrics/Silver Skies Hush.txt"
+  },
+  {
+    "title": "愛のしるし",
+    "artist": "",
+    "src": "assets/music/愛のしるし.mp3",
+    "albumArt": "assets/images/pic12.jpeg",
+    "lyrics": "assets/lyrics/愛のしるし.txt"
+  },
+  {
     "title": "Silent Glow",
     "artist": "",
     "src": "assets/music/song1.mp3",
@@ -35,13 +63,6 @@
     "lyrics": "assets/lyrics/hold_me.txt"
   },
   {
-    "title": "Smile",
-    "artist": "",
-    "src": "assets/music/Smile.mp3",
-    "albumArt": "assets/images/pic6.jpeg",
-    "lyrics": "assets/lyrics/smile.txt"
-  },
-  {
     "title": "こもりうた",
     "artist": "",
     "src": "assets/music/こもりうた.mp3",
@@ -61,27 +82,6 @@
     "src": "assets/music/Jungle ~奇跡の灯り~ mix.mp3",
     "albumArt": "assets/images/pic9.jpeg",
     "lyrics": "assets/lyrics/Jungle ~奇跡の灯り~ mix.txt"
-  },
-  {
-    "title": "Silver Skies Hush",
-    "artist": "",
-    "src": "assets/music/Silver Skies Hush.mp3",
-    "albumArt": "assets/images/pic10.jpeg",
-    "lyrics": "assets/lyrics/Silver Skies Hush.txt"
-  } ,
-  {
-    "title": "百歩先の景色",
-    "artist": "",
-    "src": "assets/music/百歩先の景色.mp3",
-    "albumArt": "assets/images/pic11.jpeg",
-    "lyrics": "assets/lyrics/百歩先の瞳.txt"
-  },
-  {
-    "title": "愛のしるし",
-    "artist": "",
-    "src": "assets/music/愛のしるし.mp3",
-    "albumArt": "assets/images/pic12.jpeg",
-    "lyrics": "assets/lyrics/愛のしるし.txt"
   }
 
 ]
