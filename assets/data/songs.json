@@ -75,6 +75,13 @@
     "src": "assets/music/百歩先の瞳.mp3",
     "albumArt": "assets/images/pic11.jpeg",
     "lyrics": "assets/lyrics/百歩先の瞳.txt"
+  },
+  {
+    "title": "愛のしるし",
+    "artist": "",
+    "src": "assets/music/愛のしるし.mp3",
+    "albumArt": "assets/images/pic12.jpeg",
+    "lyrics": "assets/lyrics/愛のしるし.txt"
   }
 
 ]
