@@ -56,13 +56,6 @@
     "lyrics": "assets/lyrics/bright.txt"
   },
   {
-    "title": "Hold Me",
-    "artist": "",
-    "src": "assets/music/holdme.mp3",
-    "albumArt": "assets/images/pic5.jpeg",
-    "lyrics": "assets/lyrics/hold_me.txt"
-  },
-  {
     "title": "こもりうた",
     "artist": "",
     "src": "assets/music/こもりうた.mp3",
