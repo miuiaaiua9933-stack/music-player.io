@@ -61,6 +61,13 @@
     "src": "assets/music/Jungle ~奇跡の灯り~ JP ver..mp3",
     "albumArt": "assets/images/pic8.jpeg",
     "lyrics": "assets/lyrics/Jungle ~奇跡の灯り~ JP ver..txt"
+  },
+  {
+    "title": "Warm Smile Silence",
+    "artist": "",
+    "src": "assets/music/Warm Smile Silence.mp3",
+    "albumArt": "assets/images/pic13.jpeg",
+    "lyrics": "assets/lyrics/Warm Smile Silence.txt"
   }
 ]
 
